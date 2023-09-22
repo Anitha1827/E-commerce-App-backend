@@ -11,7 +11,14 @@ import "./config/db.js";
 // config env
 dotenv.config();
 
-// databse config
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://superb-clafoutis-168df1.netlify.app"
+  );
+
+  next();
+});
 
 // rest Object
 const app = express();
