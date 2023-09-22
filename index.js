@@ -11,6 +11,9 @@ import "./config/db.js";
 // config env
 dotenv.config();
 
+// rest Object
+const app = express();
+
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
@@ -19,9 +22,6 @@ app.use((req, res, next) => {
 
   next();
 });
-
-// rest Object
-const app = express();
 
 // middleware
 app.use(cors());
