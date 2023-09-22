@@ -14,13 +14,18 @@ dotenv.config();
 // rest Object
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://superb-clafoutis-168df1.netlify.app",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: "Content-Type,Authorization",
-  })
-);
+const corsOptions = {
+  origin: "https://superb-clafoutis-168df1.netlify.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+};
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", corsOptions.origin);
+  res.header("Access-Control-Allow-Methods", corsOptions.methods);
+  res.header("Access-Control-Allow-Headers", corsOptions.allowedHeaders);
+  next();
+});
 
 // middleware
 app.use(cors());
