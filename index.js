@@ -6,13 +6,16 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
-import "./config/db.js";
+import connectDB from "./config/db.js";
 
 // config env
 dotenv.config();
 
 // rest Object
 const app = express();
+
+// connect DB
+connectDB();
 
 // middleware
 app.use(cors());
