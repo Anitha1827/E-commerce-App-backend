@@ -8,13 +8,13 @@ const mongooseOptions = {
 };
 
 // Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO_URL, mongooseOptions)
-  .then(() => {
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL, mongooseOptions);
     console.log("MongoDB connected successfully");
-  })
-  .catch((err) => {
+  } catch (err) {
     console.error("MongoDB connection error:", err);
-  });
+  }
+};
 
-// export default connectDB;
+export default connectDB;
