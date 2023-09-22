@@ -2,17 +2,17 @@ import express from "express";
 import colors from "colors";
 import dotenv from "dotenv";
 import morgan from "morgan";
-import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
+import "./config/db.js";
 
 // config env
 dotenv.config();
 
 // databse config
-connectDB();
+
 // rest Object
 const app = express();
 
