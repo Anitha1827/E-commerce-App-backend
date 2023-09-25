@@ -1,19 +1,13 @@
 import mongoose from "mongoose";
 import colors from "colors";
-
-// Define the MongoDB connection options
-const mongooseOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
-
-// Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, mongooseOptions);
-    console.log("MongoDB connected successfully");
-  } catch (err) {
-    console.error("MongoDB connection error:", err);
+    const conn = await mongoose.connect(process.env.MONGO_URL);
+    console.log(
+      `Conneted To Mongodb Databse ${conn.connection.host}`.bgMagenta.white
+    );
+  } catch (error) {
+    console.log(`Errro in Mongodb ${error}`.bgRed.white);
   }
 };
 
